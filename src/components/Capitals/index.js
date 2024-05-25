@@ -29,16 +29,31 @@ const countryAndCapitalsList = [
 ]
 
 class Capitals extends Component {
+  state = {activeId: countryAndCapitalsList[0].capitalDisplayText}
+
+  selectCountry = event => {
+    this.setState({activeId: event.target.value})
+  }
+
   render() {
+    const {activeId} = this.state
+    const text = countryAndCapitalsList.find(
+      element => element.capitalDisplayText === activeId,
+    )
+    console.log(text)
     return (
       <div className="bgContainer">
         <div className="smallContainer">
-          <h1>Capital City</h1>
-          <select>
+          <h1>Countries And Capitals</h1>
+          <select onChange={this.selectCountry} value={text.capitalDisplayText}>
             {countryAndCapitalsList.map(eachItem => (
-              <option>eachItem.capitalDisplayText</option>
+              <option value={eachItem.capitalDisplayText} key={eachItem.id}>
+                {eachItem.capitalDisplayText}
+              </option>
             ))}
+            <p>is capital of which country</p>
           </select>
+          <p>{text.country}</p>
         </div>
       </div>
     )
