@@ -45,7 +45,7 @@ class Capitals extends Component {
       <div className="bgContainer">
         <div className="smallContainer">
           <h1>Countries And Capitals</h1>
-          <select onChange={this.selectCountry} value={text.capitalDisplayText}>
+          <select onChange={this.selectCountry}>
             {countryAndCapitalsList.map(eachItem => (
               <option value={eachItem.capitalDisplayText} key={eachItem.id}>
                 {eachItem.capitalDisplayText}
